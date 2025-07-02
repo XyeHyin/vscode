@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+#include "./Template/SparseTable.h"
+using namespace std;
+
+#define int long long
+#define double long double
+#define PII pair<int, int>
+#define dbg(x) std::cout << #x << ":" << x << " "
+#define MP make_pair
+#define PB push_back
+#define rep(i,x,n) for(int i=x;i<=n;i++)
+#define dep(i,x,n) for(int i=x;i>=n;i--)
+#define arrout(a,n) rep(i,1,n)std::cout<<a[i]
+#define arrin(a,n) rep(i,1,n)std::cin>>a[i]
+#define endl '\n'
+void solve(){
+    int n, m, x;
+    cin >> n >> m >> x;
+    vector<int> a(n + 1);
+    map<int, int> mp;
+    for(int i = 1; i <= n; i++){
+        int num;
+        cin >> num;
+        a[i] = mp[num ^ x];
+        mp[num] = i;
+    }
+    SparseTable<int> st(a);
+    while (m--) {
+        int l, r;
+        cin >> l >> r;
+        if(st.query(l, r) >= l){
+            cout << "yes" << endl;
+        }else{
+            cout << "no" << endl;
+        }
+    }
+    return;
+}
+
+signed main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int t = 1;
+    // cin >> t;
+    while(t--)	solve();
+    return 0;
+}

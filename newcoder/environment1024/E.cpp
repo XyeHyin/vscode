@@ -1,0 +1,1 @@
+please output binary representation of the square of a000290(n)
